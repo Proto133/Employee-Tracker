@@ -1,0 +1,26 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "Console Based Employee Tracker (NodeJS, SQL)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/proto133/Employee_Tracker.git"
+  },
+  "author": "Peter Roto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/proto133/Employee_Tracker/issues"
+  },
+  "homepage": "https://github.com/proto133/Employee_Tracker#readme",
+  "dependencies": {
+    "console-png": "^1.2.1",
+    "inquirer": "^8.1.1"
+  },
+  "devDependencies": {
+    "writemereadme": "^1.5.0"
+  }
+}
