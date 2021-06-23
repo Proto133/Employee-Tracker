@@ -18,7 +18,8 @@
   "homepage": "https://github.com/proto133/Employee_Tracker#readme",
   "dependencies": {
     "console-png": "^1.2.1",
-    "inquirer": "^8.1.1"
+    "inquirer": "^8.1.1",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "writemereadme": "^1.5.0"
