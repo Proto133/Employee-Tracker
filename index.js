@@ -11,23 +11,23 @@ const inq = require('inquirer')
 png(image, function(err, string) {
     if (err) throw err;
     console.log(string);
-    waitForIt();
+    greeting();
 })
 
-function waitForIt(ready) {
+function greeting(ready) {
     setTimeout(function() {
         if (ready == -1) {
             console.log('. . .');
         }
     }, 5000);
-
+    console.log(' \n \n Welcome to Employee Tracker. \n Personnel in your console. \n \n');
     mainPrompt()
 }
 
 function mainPrompt() {
 
     /* #region Console Image */
-    console.log(' \n \n Welcome to Employee Tracker. \n Personnel in your console. \n \n');
+
     inq.prompt({
         type: 'list',
         message: 'What Would You like to Do? :',
