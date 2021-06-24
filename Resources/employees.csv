@@ -1,0 +1,14 @@
+id,first_name,last_name,role_id,manager_id
+1,Peter,Roto,1,1
+2,"Malory ",Archer,2,1
+3,"Sterling ",Archer,3,1
+4,Ron,Cadillac,4,3
+5,Pam,Poovey,2,1
+6,Arthur,Woodhouse,6,3
+7,Cheryl,Tunt,7,5
+8,Ceril,Figgis,8,2
+9,Barry,Dillon,4,3
+10,Ray,Gillette,4,3
+11,Lana,Kane,4,3
+12,Rip,Riley,6,6
+13,NULL,NULL,NULL,NULL

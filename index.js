@@ -2,7 +2,7 @@
 const png = require('console-png');
 const image = require('fs').readFileSync(__dirname + '/images/ETLogo2.png');
 const inq = require('inquirer');
-const connection = require('connection')
+const connection = require('./public/connection')
     /* #endregion */
 
 
@@ -35,63 +35,67 @@ function mainPrompt() {
         type: 'list',
         message: 'What Would You like to Do? :',
         choices: [
-            "View employees",
-            "View departments",
-            "View roles",
-            "Add employee",
-            "Add department",
-            "Add role",
-            "Update role",
-            "Update manager",
-            "Display employees by manager",
-            "Delete an employee",
-            "Delete a role",
-            "Delete a department",
-            "View utilized budget for a department",
+            "View Employees",
+            "View Departments",
+            "View Roles",
+            "Add Employee",
+            "Add Department",
+            "Add Role",
+            "Update Role",
+            "Update Manager",
+            "Display Employees by Manager",
+            "Delete an Employee",
+            "Delete a Role",
+            "Delete a Department",
+            "View Utilized Budget for a Department",
             "Quit"
         ],
         name: 'choice'
     }).then((answer) => {
-        switch (answer.action) {
+        switch (answer.choice) {
+            case 'View Employees':
+                employeeView();
+                break;
+
             case 'View Departments':
-                departmentViewPrompt();
+                departmentView();
                 break;
 
             case 'View Roles':
-                roleViewPrompt();
+                roleView();
                 break;
 
             case 'Add Employee':
                 addEmployeePrompt();
                 break;
-            case 'Add department':
+            case 'Add Department':
                 addDepartmentPrompt();
                 break;
 
-            case 'Add role':
+            case 'Add Role':
                 addRolePrompt();
                 break;
 
-            case 'Update role':
-                updateRole();
+            case 'Update Role':
+                updateRolePrompt();
                 break;
             case 'Update Manager':
-                updateManager();
+                updateManagerPrompt();
                 break;
-            case 'Display employees by manager':
-                viewByManager();
+            case 'Display Employees by Manager':
+                viewByManagerPrompt();
                 break;
-            case "Delete an employee":
-                deleteEmployee();
+            case "Delete an Employee":
+                deleteEmployeePrompt();
                 break;
-            case "Delete a role":
-                deleteRole();
+            case "Delete a Role":
+                deleteRolePrompt();
                 break;
-            case "Delete a department":
-                deleteDepartment();
+            case "Delete a Department":
+                deleteDepartmentPrompt();
                 break;
-            case "View utilized budget for a department":
-                viewBudget();
+            case "View Utilized Budget for a Department":
+                viewBudgetPrompt();
                 break;
 
             case 'Quit':
@@ -99,34 +103,67 @@ function mainPrompt() {
                 break;
         }
     });
-    /* #endregion */
-
-
-    function departmentViewPrompt() {}
-
-    function roleViewPrompt() {}
-
-    function addEmployeePrompt() {}
-
-    function addDepartmentPrompt() {}
-
-    function addRolePrompt() {}
-
-    function updateRole() {}
-
-    function updateManager() {}
-
-    function deleteEmployeePrompt() {}
-
-    function deleteRolePrompt() {}
-
-    function deleteDepartmentPrompt() {}
-
-    function viewBudgetPrompt() {}
-
-    // Connect to the DB
-    connection.connect((err) => {
+};
+/* #endregion */
+function departmentView() {
+    console.log('deptview fired');
+    const query = 'SELECT * FROM departments';
+    connection.query(query, (err, res) => {
         if (err) throw err;
-        console.log(`connected as id ${connection.threadId}\n`);
-        init();
-    });
+        console.log(`\n`);
+        console.table(res);
+    })
+    mainPrompt()
+}
+
+function roleView() {
+    console.log('roleView fired');
+    const query = 'SELECT * FROM roles';
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+        console.log(`\n`);
+        console.table(res);
+    })
+    mainPrompt()
+}
+
+function employeeView() {
+    console.log('employeeView fired');
+    const query = 'SELECT * FROM employees';
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+        console.log(`\n`);
+        console.table(res);
+    })
+    mainPrompt()
+}
+
+
+function addEmployeePrompt() { console.log('addEmp fired'); }
+
+function addDepartmentPrompt() { console.log('addDept fired'); }
+
+function addRolePrompt() { console.log('addRole fired'); }
+
+function updateRolePrompt() { console.log('updateRole fired'); }
+
+function updateManagerPrompt() { console.log('update Manager fired'); }
+
+function deleteEmployeePrompt() { console.log('deleteEMP fired'); }
+
+function deleteRolePrompt() { console.log('DeleteRole fired'); }
+
+function deleteDepartmentPrompt() { console.log('DeleteDEPT fired'); }
+
+function viewBudgetPrompt() { console.log('ViewBudget fired'); }
+
+
+//Connect to the database
+connection.connect(function(err) {
+    if (err) {
+        console.error("error connecting: " + err.stack);
+        return;
+    }
+    console.log("connected as id " + connection.threadId);
+    init();
+});
