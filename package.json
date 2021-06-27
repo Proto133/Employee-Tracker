@@ -1,28 +1,32 @@
 {
-  "name": "employee-tracker",
-  "version": "1.0.0",
-  "description": "Console Based Employee Tracker (NodeJS, SQL)",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/proto133/Employee_Tracker.git"
-  },
-  "author": "Peter Roto",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/proto133/Employee_Tracker/issues"
-  },
-  "homepage": "https://github.com/proto133/Employee_Tracker#readme",
-  "dependencies": {
-    "console-png": "^1.2.1",
-    "inquirer": "^8.1.1",
-    "mysql": "^2.18.1",
-    "sequelize": "^6.6.4"
-  },
-  "devDependencies": {
-    "writemereadme": "^1.5.0"
-  }
+    "name": "employee-tracker",
+    "version": "1.0.0",
+    "description": "Console Based Employee Tracker (NodeJS, SQL)",
+    "main": "index.js",
+    "scripts": {
+        "start": "node server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/proto133/Employee_Tracker.git"
+    },
+    "author": "Peter Roto",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/proto133/Employee_Tracker/issues"
+    },
+    "homepage": "https://github.com/proto133/Employee_Tracker#readme",
+    "dependencies": {
+        "console-png": "^1.2.1",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "inquirer": "^8.1.1",
+        "mysql": "^2.18.1",
+        "mysql2": "^2.2.5",
+        "sequelize": "^6.6.4"
+    },
+    "devDependencies": {
+        "writemereadme": "^1.5.0"
+    }
 }

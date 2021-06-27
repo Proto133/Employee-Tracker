@@ -2,8 +2,11 @@
 const png = require('console-png');
 const image = require('fs').readFileSync(__dirname + '/images/ETLogo2.png');
 const inq = require('inquirer');
-const connection = require('./public/connection')
-    /* #endregion */
+const Sequelize = require('./config/connection');
+const Employee = require('./models/Employee');
+const Dept = require('./models/Department');
+const Role = require('./models/Role');
+/* #endregion */
 
 
 
@@ -99,47 +102,52 @@ function mainPrompt() {
                 break;
 
             case 'Quit':
-                connection.end();
+                Sequelize.end();
                 break;
         }
     });
 };
 /* #endregion */
-function departmentView() {
+async function departmentView() {
     console.log('deptview fired');
-    const query = 'SELECT * FROM departments';
-    connection.query(query, (err, res) => {
-        if (err) throw err;
-        console.log(`\n`);
-        console.table(res);
-    })
+    await Dept.findAll({ raw: true }).then(res => { console.log(res) })
     mainPrompt()
 }
 
-function roleView() {
+async function roleView() {
     console.log('roleView fired');
-    const query = 'SELECT * FROM roles';
-    connection.query(query, (err, res) => {
-        if (err) throw err;
-        console.log(`\n`);
-        console.table(res);
-    })
+    await Role.findAll({ raw: true }).then(res => { console.log(res) });
     mainPrompt()
 }
 
-function employeeView() {
+async function employeeView() {
     console.log('employeeView fired');
-    const query = 'SELECT * FROM employees';
-    connection.query(query, (err, res) => {
-        if (err) throw err;
-        console.log(`\n`);
-        console.table(res);
-    })
-    mainPrompt()
+    let data = [];
+    let emps = [];
+    await Employee.findAll({ raw: true }).then(res => data.push(res));
+    console.log('data:', data);
+    data[0].forEach(emp => emps.push(emp));
+    emps.forEach(person => Employee.findByPk));
+
+console.table(emps);
+
+// let displayTable = [];
+// displayTable.push(JSON.stringify(empAll));
+// displayTable.forEach(type => console.log(type));
+// console.table(JSON.parse(displayTable));
+// const query = 'SELECT * FROM employees';
+// connection.query(query, (err, res) => {
+//     if (err) throw err;
+//     console.log(`\n`);
+//     console.log(res);
+// })
+mainPrompt()
 }
 
 
-function addEmployeePrompt() { console.log('addEmp fired'); }
+function addEmployeePrompt() {
+    console.log('addEmp fired');
+}
 
 function addDepartmentPrompt() { console.log('addDept fired'); }
 
@@ -157,13 +165,4 @@ function deleteDepartmentPrompt() { console.log('DeleteDEPT fired'); }
 
 function viewBudgetPrompt() { console.log('ViewBudget fired'); }
 
-
-//Connect to the database
-connection.connect(function(err) {
-    if (err) {
-        console.error("error connecting: " + err.stack);
-        return;
-    }
-    console.log("connected as id " + connection.threadId);
-    init();
-});
+init();

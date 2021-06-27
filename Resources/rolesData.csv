@@ -1,9 +1,9 @@
-id,title,salary,department_id
-1,CEO,500000,3
-2,CFO,300000,3
-NULL,"Director of Business Development",200000,3
-NULL,"Account Rep",50000,1
-NULL,"Director of Human Resources",60000,2
-NULL,"Master of Custodial Arts",90000,4
-NULL,Laywer,350000,6
-NULL,Accounant,250000,5
+title,salary,department_id
+CEO,500000,3
+CFO,300000,3
+"Director of Business Development",200000,3
+"Account Rep",50000,1
+"Director of Human Resources",60000,2
+"Master of Custodial Arts",90000,4
+Laywer,350000,6
+Accounant,250000,5

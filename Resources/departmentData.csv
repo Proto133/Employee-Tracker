@@ -1,7 +1,7 @@
-id,name
+id, dept_name
 1,Sales
 2,HR
 3,Administration
 4,Janitorial
 5,Accounting
-NULL,Legal
+6,Legal

@@ -1,27 +1,26 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Employee extends Model {}
+class Role extends Model {}
 
-Employee.init({
-    firstName: {
+Role.init({
+    title: {
         type: DataTypes.STRING,
     },
-    lastName: {
-        type: DataTypes.STRING,
-    },
-    roleId: {
-        type: DataTypes.STRING,
-    },
-    managerId: {
+
+    salary: {
         type: DataTypes.INTEGER,
-    }
+    },
+
+    deptId: {
+        type: DataTypes.INTEGER,
+    },
 }, {
     sequelize,
     timestamps: false,
     freezeTableName: false,
     underscored: true,
-    modelName: 'employee',
+    modelName: 'Role',
 });
 
-module.exports = Employee;
+module.exports = Role;
