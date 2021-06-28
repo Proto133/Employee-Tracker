@@ -2,7 +2,7 @@
 const png = require('console-png');
 const image = require('fs').readFileSync(__dirname + '/images/ETLogo2.png');
 const inq = require('inquirer');
-const connection = require('./config/connection');
+const sequelize = require('./config/connection');
 const Employee = require('./models/Employee');
 const Dept = require('./models/Department');
 const Role = require('./models/Role');
@@ -102,7 +102,7 @@ function mainPrompt() {
                 break;
 
             case 'Quit':
-                connection.close();
+                sequelize.close();
                 break;
         }
     });

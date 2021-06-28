@@ -1,6 +1,5 @@
-const { Sequelize, Model, DataTypes } = require('sequelize');
-const connection = require('../config/connection');
-const sequelize = new Sequelize();
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 class Department extends Model {}
 
@@ -9,7 +8,7 @@ Department.init({
         type: DataTypes.STRING,
     }
 }, {
-    connection,
+    sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,

@@ -1,6 +1,5 @@
-const { Sequelize, Model, DataTypes } = require('sequelize');
-const connection = require('../config/connection');
-const sequelize = new Sequelize();
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 class Role extends Model {}
 
@@ -17,14 +16,13 @@ Role.init({
         type: DataTypes.INTEGER,
     },
 }, {
-    connection,
+    sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'Roles',
 });
 
-R.hasOne(D, { foreignKey: { name: 'deptId' } })
 
 
 

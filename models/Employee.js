@@ -1,6 +1,5 @@
-const { Sequelize, Model, DataTypes } = require('connection');
-const connection = require('../config/connection');
-const sequelize = new Sequelize();
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 class Employee extends Model {
     getManager() { let query = `SELECT * FROM ` }
@@ -29,7 +28,7 @@ Employee.init({
         }
     }
 }, {
-    connection,
+    sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
