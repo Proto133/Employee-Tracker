@@ -33,7 +33,8 @@ function greeting(ready) {
     mainPrompt()
 }
 
-function mainPrompt() {
+async function mainPrompt() {
+    await sequelize.sync();
     inq.prompt({
         type: 'list',
         message: 'What Would You like to Do? :',
@@ -128,20 +129,28 @@ async function employeeView() {
     let data = [];
     let emps = [];
 
-    await Employee.findAll({ raw: true }).then(res => data.push(res));
+    await Employee.findAll({
+        raw: true,
+        attributes: [
+            ['first_name', 'FirstName'],
+            ['last_name', 'LastName'],
+            ['role_id', 'Role'],
+            ['manager_id', 'Manager']
+        ]
+    }).then(res => data.push(res));
     data[0].forEach(emp => emps.push(emp));
     emps.find(r => {
         //Pretty up the data for the console.table
-        if (r.roleId == 1) { r.roleId = "CEO" }
-        if (r.roleId == 2) { r.roleId = "CFO" }
-        if (r.roleId == 3) { r.roleId = "DBD" }
-        if (r.roleId == 4) { r.roleId = "REP" }
-        if (r.roleId == 5) { r.roleId = "DHR" }
-        if (r.roleId == 6) { r.roleId = "MCA" }
-        if (r.roleId == 7) { r.roleId = "ESQ" }
-        if (r.roleId == 8) { r.roleId = "CPA" }
-        let mID = (r.managerId - 1)
-        if (r.managerId) { r.managerId = emps[mID].firstName + " " + emps[mID].lastName }
+        if (r.Role == 1) { r.Role = "CEO" }
+        if (r.Role == 2) { r.Role = "CFO" }
+        if (r.Role == 3) { r.Role = "DBD" }
+        if (r.Role == 4) { r.Role = "REP" }
+        if (r.Role == 5) { r.Role = "DHR" }
+        if (r.Role == 6) { r.Role = "MCA" }
+        if (r.Role == 7) { r.Role = "ESQ" }
+        if (r.Role == 8) { r.Role = "CPA" }
+        let mID = (r.Manager - 1)
+        if (r.Manager) { r.Manager = emps[mID].FirstName.trim() + " " + emps[mID].LastName.trim() }
     })
     console.table(emps);
 
