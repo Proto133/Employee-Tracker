@@ -2,7 +2,7 @@
 const png = require('console-png');
 const image = require('fs').readFileSync(__dirname + '/images/ETLogo2.png');
 const inq = require('inquirer');
-const Sequelize = require('./config/connection');
+const connection = require('./config/connection');
 const Employee = require('./models/Employee');
 const Dept = require('./models/Department');
 const Role = require('./models/Role');
@@ -29,7 +29,7 @@ function greeting(ready) {
             console.log('. . .');
         }
     }, 5000);
-    console.log(' \n \n Welcome to Employee Tracker. \n Personnel in your console. \n \n');
+    console.log(`\n \n Welcome to Employee Tracker. \n Personnel in your console. \n \n`);
     mainPrompt()
 }
 
@@ -102,7 +102,7 @@ function mainPrompt() {
                 break;
 
             case 'Quit':
-                Sequelize.end();
+                connection.close();
                 break;
         }
     });
@@ -110,13 +110,16 @@ function mainPrompt() {
 /* #endregion */
 async function departmentView() {
     console.log('deptview fired');
-    await Dept.findAll({ raw: true }).then(res => { console.log(res) })
+    await Dept.findAll({ raw: true }).then(res => { console.table(res) })
     mainPrompt()
 }
 
 async function roleView() {
     console.log('roleView fired');
-    await Role.findAll({ raw: true }).then(res => { console.log(res) });
+    let dataRoles = [];
+    let dataDept = [];
+    await Role.findAll({ raw: true }).then(res => dataRoles.push(res));
+    await Department.findAll({ raw: true }).then(res => dataDept.push(res));
     mainPrompt()
 }
 
@@ -124,29 +127,80 @@ async function employeeView() {
     console.log('employeeView fired');
     let data = [];
     let emps = [];
+
     await Employee.findAll({ raw: true }).then(res => data.push(res));
-    console.log('data:', data);
     data[0].forEach(emp => emps.push(emp));
-    emps.forEach(person => Employee.findByPk));
+    emps.find(r => {
+        //Pretty up the data for the console.table
+        if (r.roleId == 1) { r.roleId = "CEO" }
+        if (r.roleId == 2) { r.roleId = "CFO" }
+        if (r.roleId == 3) { r.roleId = "DBD" }
+        if (r.roleId == 4) { r.roleId = "REP" }
+        if (r.roleId == 5) { r.roleId = "DHR" }
+        if (r.roleId == 6) { r.roleId = "MCA" }
+        if (r.roleId == 7) { r.roleId = "ESQ" }
+        if (r.roleId == 8) { r.roleId = "CPA" }
+        let mID = (r.managerId - 1)
+        if (r.managerId) { r.managerId = emps[mID].firstName + " " + emps[mID].lastName }
+    })
+    console.table(emps);
 
-console.table(emps);
-
-// let displayTable = [];
-// displayTable.push(JSON.stringify(empAll));
-// displayTable.forEach(type => console.log(type));
-// console.table(JSON.parse(displayTable));
-// const query = 'SELECT * FROM employees';
-// connection.query(query, (err, res) => {
-//     if (err) throw err;
-//     console.log(`\n`);
-//     console.log(res);
-// })
-mainPrompt()
+    mainPrompt()
 }
 
 
 function addEmployeePrompt() {
     console.log('addEmp fired');
+    inq.prompt([{
+        type: 'input',
+        message: 'New Employee First Name:',
+        name: 'fName',
+    }, {
+        type: 'input',
+        message: 'Last Name? :',
+        name: 'lName',
+    }, {
+        type: 'list',
+        message: 'What Job Will They Do?:',
+        choices: [
+            'Account Rep',
+            'Lawyer',
+            'Accountant',
+            'Master of Custodial Arts'
+        ],
+        name: 'job'
+    }, {
+        type: 'confirm',
+        message: "Are you sure you'd like to add this employee?",
+        name: 'confirm'
+    }]).then((answer) => {
+        console.log(answer);
+        let roleid
+        let departmentid
+        let managerid
+        let job = answer.job
+        let fName = answer.fName
+        let lName = answer.lName
+        if (job === 'Account Rep') {
+            roleid = 4;
+            departmentid = 1;
+            managerid = 3
+
+        }
+        if (answer.confirm) {
+            Employee.create({
+                firstName: fName,
+                lastName: lName,
+                roleId: roleid,
+                managerId: managerid
+            }).then(employeeView())
+
+        } else {
+            console.log('Ok, going back to welcome.')
+
+        }
+        mainPrompt();
+    })
 }
 
 function addDepartmentPrompt() { console.log('addDept fired'); }

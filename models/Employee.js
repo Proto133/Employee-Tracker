@@ -1,5 +1,6 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Sequelize, Model, DataTypes } = require('connection');
+const connection = require('../config/connection');
+const sequelize = new Sequelize();
 
 class Employee extends Model {}
 
@@ -11,17 +12,26 @@ Employee.init({
         type: DataTypes.STRING,
     },
     roleId: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
     },
     managerId: {
         type: DataTypes.INTEGER,
+    },
+    fullName: {
+        type: DataTypes.VIRTUAL,
+        get() {
+            return `${this.firstName} ${this.lastName}`;
+        },
+        set(value) {
+            throw new Error('Do not try to set the `fullName` value!');
+        }
     }
 }, {
-    sequelize,
+    connection,
     timestamps: false,
-    freezeTableName: false,
+    freezeTableName: true,
     underscored: true,
-    modelName: 'employee',
+    modelName: 'Employees',
 });
 
 module.exports = Employee;

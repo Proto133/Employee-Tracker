@@ -1,5 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const connection = require('../config/connection');
+const R = sequelize.define('Roles');
+const D = sequelize.define('Departments');
 
 class Role extends Model {}
 
@@ -16,11 +18,15 @@ Role.init({
         type: DataTypes.INTEGER,
     },
 }, {
-    sequelize,
+    connection,
     timestamps: false,
-    freezeTableName: false,
+    freezeTableName: true,
     underscored: true,
-    modelName: 'Role',
+    modelName: 'Roles',
 });
+
+R.hasOne(D, { foreignKey: { name: 'deptId' } })
+
+
 
 module.exports = Role;

@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Sequelize, Model, DataTypes } = require('sequelize');
+const connection = require('../config/connection');
 
 class Department extends Model {}
 
@@ -8,11 +8,11 @@ Department.init({
         type: DataTypes.STRING,
     }
 }, {
-    sequelize,
+    connection,
     timestamps: false,
-    freezeTableName: false,
+    freezeTableName: true,
     underscored: true,
-    modelName: 'department',
+    modelName: 'Departments',
 });
 
 module.exports = Department;

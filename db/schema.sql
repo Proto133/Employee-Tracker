@@ -4,22 +4,23 @@ CREATE DATABASE ET_db;
 
 USE ET_db;
 
-CREATE TABLE departments (
+CREATE TABLE Departments (
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     name VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE roles (
+CREATE TABLE Roles (
     id INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
     title VARCHAR(30) NOT NULL,
     salary DECIMAL(10,2) NOT NULL,
     department_id INT(10) NOT NULL
 );
 
-CREATE TABLE employees (
+CREATE TABLE Employees (
     id INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
     role_id INT(10) NOT NULL,
     manager_id INT(10)
+    FOREIGN KEY (role_id) REFERENCES Roles(title);
 )
