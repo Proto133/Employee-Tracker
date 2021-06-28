@@ -20,7 +20,6 @@ CREATE TABLE Employees (
     id INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
-    role_id INT(10) NOT NULL,
-    manager_id INT(10)
-    FOREIGN KEY (role_id) REFERENCES Roles(title);
-)
+    role_id INT(10) REFERENCES Roles(title),
+    manager_id INT(10) 
+);

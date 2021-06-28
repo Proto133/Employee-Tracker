@@ -1,5 +1,6 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
 const connection = require('../config/connection');
+const sequelize = new Sequelize();
 
 class Department extends Model {}
 

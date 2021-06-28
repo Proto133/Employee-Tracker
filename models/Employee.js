@@ -2,7 +2,9 @@ const { Sequelize, Model, DataTypes } = require('connection');
 const connection = require('../config/connection');
 const sequelize = new Sequelize();
 
-class Employee extends Model {}
+class Employee extends Model {
+    getManager() { let query = `SELECT * FROM ` }
+}
 
 Employee.init({
     firstName: {
