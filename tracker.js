@@ -7,7 +7,7 @@ const EXIT = () => connection.end();
 // const Employee = require('./models/Employee');
 // const Dept = require('./models/Department');
 // const Role = require('./models/Role');
-const orm = require('./orm');
+const orm = require('./config/orm');
 /* #endregion */
 
 

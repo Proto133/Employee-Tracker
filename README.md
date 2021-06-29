@@ -22,12 +22,19 @@
 
   1. Clone Repo
   2. Run ``` npm i```  in repo directory  
-  3. Run  ``` node index.js ``` in terminal. 
+  3. Run  ``` npm start ``` in terminal. 
   
   ## Usage 🖱️
 ---
+A hypothetical use case would be:
+```
 
-  TODO: ADD  USAGE STUFF
+As a business owner
+I want to be able to view and manage the departments, roles, and employees in my company
+So that I can organize and plan my business
+
+```
+  
   
   ## Contributors 🧑‍🤝‍🧑
 ---
