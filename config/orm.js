@@ -100,6 +100,7 @@ const orm = {
             });
         });
     },
+    //Query DB for all pertinent info, then create an object that's pretty enough for the spotlight from the results.
     viewRoles: function() {
         return new Promise(function(resolve, reject) {
             const queryString = "SELECT Roles.id, title, salary, dept_name FROM Roles LEFT JOIN Departments ON Roles.dept_id = Departments.id";
@@ -123,6 +124,7 @@ const orm = {
         });
 
     },
+    //Get Roles from DB then send them back.
     getRoles: function() {
         return new Promise(function(resolve, reject) {
             const queryString = "SELECT * FROM Roles";
@@ -274,7 +276,7 @@ const orm = {
             if (err) {
                 return console.log(err.message);
             } else {
-                console.log('Closing the database connection. \n\n');
+                console.log('\n\u{1F44B} GOOD-BBBBBBYYYYYYYYYYYYYYYEEEEEEEEEEEEEEEEEEEEEE!!!!!!!!!!!!!!!!!!!!!!!! \u{1F44B}\n');
             }
         });
     }

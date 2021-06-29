@@ -178,7 +178,6 @@ function addEmployeePrompt() {
         });
 }
 
-
 function addDepartmentPrompt() {
     console.log('addDept fired');
     orm.getDepartments()
@@ -252,7 +251,7 @@ function addRolePrompt() {
         });
 }
 
-// Grabs all employees, asks user which one they want to update, asks what role the employee should have, then calls ORM function to update the database
+// Grabs all employees, asks user which one they want to update, asks what role the employee should have, then calls ORM method to update the database
 function updateRolePrompt() {
     orm.getEmployees()
         .then(function(res) {
@@ -290,7 +289,7 @@ function updateRolePrompt() {
         })
 }
 
-// Grabs all employees, asks user which one they want to update, asks what manager the employee should have, then calls ORM function to update the database
+// Grabs all employees, asks user which one they want to update, asks what manager the employee should have, then calls ORM method to update the database
 function updateManagerPrompt() {
     orm.getEmployees()
         .then(function(employees) {
@@ -452,6 +451,7 @@ function start() {
     mainPrompt();
 }
 
+// ONLY USED INCASE OF ERROR IN QUERIES MADE IN ORM JS
 const backToStart = () => {
     console.log('\n \n \n')
     mainPrompt();
