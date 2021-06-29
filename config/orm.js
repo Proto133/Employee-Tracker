@@ -1,5 +1,6 @@
 const connection = require('./connection');
 const tracker = require('../tracker')
+const cTable = require('console.table')
 
 
 const orm = {
@@ -10,7 +11,7 @@ const orm = {
                 if (err) {
                     return reject(err);
                 }
-                console.log("Department successfully added!");
+                console.log("Department Successfully Added!");
                 return resolve();
             });
         });
@@ -23,7 +24,7 @@ const orm = {
                 if (err) {
                     return reject(err);
                 }
-                console.log("Role successfully added!");
+                console.log("Role Successfully Added!");
                 return resolve();
             });
         });
@@ -36,7 +37,7 @@ const orm = {
                 if (err) {
                     return reject(err);
                 }
-                console.log("Employee successfully added!");
+                console.log("Employee Successfully Added!");
                 return resolve();
             });
         });
@@ -49,8 +50,6 @@ const orm = {
                 if (err) {
                     return reject(err);
                 }
-                console.log(result)
-
                 let newTable = [];
                 for (let i = 0; i < result.length; i++) {
 
@@ -108,7 +107,6 @@ const orm = {
                 if (err) {
                     return reject(err);
                 }
-                console.log(result)
                 const newTable = [];
                 for (let i = 0; i < result.length; i++) {
                     const roleObj = {
@@ -180,7 +178,7 @@ const orm = {
                         if (err) {
                             return reject(err);
                         }
-                        console.log("Employee's role successfully updated!");
+                        console.log("Employee's Role Successfully Updated!");
                         return resolve();
                     });
             });
@@ -201,7 +199,7 @@ const orm = {
                     if (err) {
                         return reject(err);
                     }
-                    console.log("Employee's manager successfully updated!");
+                    console.log("Employee's Manager Successfully Updated!");
                     return resolve();
                 });
         });
@@ -239,7 +237,7 @@ const orm = {
                 if (err) {
                     return reject(err);
                 }
-                console.log("Record successfully deleted");
+                console.log("Record Successfully Deleted");
                 return resolve();
             });
         });

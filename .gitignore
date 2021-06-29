@@ -7,8 +7,8 @@ dev
 ## png Source File
 images/ETLogo2.xcf
 
-## Resources
-Seed_Data
+# ## Resources
+# Seed_Data
 
 ##DOTenv
 .env

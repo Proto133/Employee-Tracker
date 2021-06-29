@@ -1,0 +1,11 @@
+[
+    { "id": 1, "title": "CEO", "salary": 500000, "dept_id": 3 },
+    { "id": 2, "title": "CFO", "salary": 300000, "dept_id": 3 },
+    { "id": 3, "title": "Director of Business Development", "salary": 200000, "dept_id": 3 },
+    { "id": 4, "title": "Account Rep", "salary": 50000, "dept_id": 1 },
+    { "id": 5, "title": "Director of Human Resources", "salary": 60000, "dept_id": 2 },
+    { "id": 6, "title": "Master of Custodial Arts", "salary": 90000, "dept_id": 4 },
+    { "id": 7, "title": "Laywer", "salary": 350000, "dept_id": 6 },
+    { "id": 8, "title": "Accountant", "salary": 250000, "dept_id": 5 },
+    { "id": 9, "title": "IT Specialist", "salary": 85000, "dept_id": 9 }
+]

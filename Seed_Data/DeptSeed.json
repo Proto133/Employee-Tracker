@@ -1,0 +1,9 @@
+[
+    { "id": 1, "dept_name": "Sales" },
+    { "id": 2, "dept_name": "HR" },
+    { "id": 3, "dept_name": "Administration" },
+    { "id": 4, "dept_name": "Janitorial" },
+    { "id": 5, "dept_name": "Accounting" },
+    { "id": 6, "dept_name": "Legal" },
+    { "id": 9, "dept_name": "IT" }
+]

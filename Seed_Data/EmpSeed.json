@@ -1,0 +1,15 @@
+[
+    { "id": 1, "first_name": "Peter", "last_name": "Roto", "role_id": 1, "manager_id": 1 },
+    { "id": 2, "first_name": "Malory ", "last_name": "Archer", "role_id": 2, "manager_id": 1 },
+    { "id": 3, "first_name": "Sterling ", "last_name": "Archer", "role_id": 3, "manager_id": 1 },
+    { "id": 4, "first_name": "Ron", "last_name": "Cadillac", "role_id": 4, "manager_id": 3 },
+    { "id": 5, "first_name": "Pam", "last_name": "Poovey", "role_id": 5, "manager_id": 2 },
+    { "id": 6, "first_name": "Arthur", "last_name": "Woodhouse", "role_id": 6, "manager_id": 3 },
+    { "id": 7, "first_name": "Cheryl", "last_name": "Tunt", "role_id": 7, "manager_id": 5 },
+    { "id": 8, "first_name": "Ceril", "last_name": "Figgis", "role_id": 8, "manager_id": 2 },
+    { "id": 9, "first_name": "Barry", "last_name": "Dillon", "role_id": 4, "manager_id": 3 },
+    { "id": 10, "first_name": "Ray", "last_name": "Gillette", "role_id": 4, "manager_id": 3 },
+    { "id": 11, "first_name": "Lana", "last_name": "Kane", "role_id": 4, "manager_id": 3 },
+    { "id": 12, "first_name": "Rip", "last_name": "Riley", "role_id": 6, "manager_id": 6 },
+    { "id": 18, "first_name": "Algernop", "last_name": "Krieger", "role_id": 9, "manager_id": 1 }
+]
