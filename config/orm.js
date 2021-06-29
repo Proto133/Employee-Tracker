@@ -226,7 +226,11 @@ const orm = {
                     };
                     newTable.push(tableElement);
                 }
-                console.table(newTable);
+                if (newTable.length == 0) {
+                    console.log('\n \nThat Employee is Not a Manager. . . but They Could Be One Day.');
+                } else {
+                    console.table(newTable);
+                }
                 return resolve();
             });
         });
