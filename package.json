@@ -4,7 +4,7 @@
     "description": "Console Based Employee Tracker (NodeJS, SQL)",
     "main": "index.js",
     "scripts": {
-        "start": "node server.js",
+        "start": "node tracker.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
@@ -21,9 +21,7 @@
         "console-png": "^1.2.1",
         "dotenv": "^10.0.0",
         "inquirer": "^8.1.1",
-        "mysql": "^2.18.1",
-        "mysql2": "^2.2.5",
-        "sequelize": "^6.6.4"
+        "mysql2": "^2.2.5"
     },
     "devDependencies": {
         "writemereadme": "^1.5.0"
