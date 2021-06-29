@@ -1,5 +1,5 @@
-const connection = require('./config/connection');
-const tracker = require('./tracker')
+const connection = require('./connection');
+const tracker = require('../tracker')
 
 
 const orm = {
